@@ -6,6 +6,10 @@ window.onload = () => {
         trickle: false
     });
 
+    if(location.hash === "#1") {
+        document.getElementById("yourId").setAttribute("placeholder", "Wait a second...");
+    }
+
     peer.on("signal", function (data) {
         console.log("Take me down to new york city, where the yorks are new and the city is city");
         document.getElementById("yourId").value = JSON.stringify(data);
@@ -14,6 +18,7 @@ window.onload = () => {
     document.getElementById("connect").addEventListener("click", function () {
         var otherId = JSON.parse(document.getElementById("otherId").value);
         peer.signal(otherId);
+        console.log("Signalling the other guy...");
     });
 
     document.getElementById("send").addEventListener("click", function () {
