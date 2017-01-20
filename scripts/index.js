@@ -18,10 +18,12 @@ window.onload = () => {
 
     document.getElementById("send").addEventListener("click", function () {
         var yourMessage = document.getElementById("yourMessage").value;
+        document.getElementById("yourMessage").value = "";
         peer.send(yourMessage);
+        document.getElementById("messages").textContent += "Me: " + yourMessage + "\n";
     });
 
     peer.on("data", function (data) {
-        document.getElementById("messages").textContent += data + "\n";
+        document.getElementById("messages").textContent += "Them: " + data + "\n";
     });
 };
