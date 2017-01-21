@@ -31,4 +31,14 @@ window.onload = () => {
     peer.on("data", function (data) {
         document.getElementById("messages").textContent += "Them: " + data + "\n";
     });
+
+    peer.on("close", function() {
+        console.log("Your peer went bye-bye! :(");
+    });
+
+    peer.on("error", function (err) {
+        console.error("Encountered a peer error!");
+        console.error(err);
+        document.getElementById("messages").textContent += "Error: " + err + "\n";
+    });
 };
