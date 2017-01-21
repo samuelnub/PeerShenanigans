@@ -21,6 +21,10 @@ window.onload = () => {
         console.log("Signalling the other guy...");
     });
 
+    peer.on("connect", function() {
+        document.getElementById("messages").textContent += "Status: " + "Your peer just successfully connected! Tickle me upside-down and call me bamboozled, it worked!" + "\n";
+    });
+
     document.getElementById("send").addEventListener("click", function () {
         var yourMessage = document.getElementById("yourMessage").value;
         document.getElementById("yourMessage").value = "";
@@ -33,7 +37,7 @@ window.onload = () => {
     });
 
     peer.on("close", function() {
-        console.log("Your peer went bye-bye! :(");
+        document.getElementById("messages").textContent += "Status: " + "Your peer just left you :( it's ok man." + "\n";
     });
 
     peer.on("error", function (err) {
