@@ -15,7 +15,8 @@ pem.createCertificate({
 
     app.get("/", function (req, res) {
         res.sendFile("index.html", { root: __dirname });
-        console.log("Someone wanted to get this page!  " + __dirname);
+        // By the way, ::1 is the IPv6 loopback, aka the IPv4's 127.0.0.1
+        console.log("Someone wanted to get this page!  " + __dirname + ", and that person's IP is: " + req.connection.remoteAddress + ", with port: " + req.connection.remotePort);
     });
 
     httpsServer.listen(8001, () => {
