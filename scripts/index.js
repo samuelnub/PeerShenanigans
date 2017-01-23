@@ -2,8 +2,8 @@ console.log("hey!");
 
 window.onload = () => {
     var peer = new SimplePeer({
-        initiator: location.hash === "#1",
-        trickle: false
+        initiator: location.hash === "#1"//,
+        //trickle: false
     });
 
     if(location.hash === "#1") {
