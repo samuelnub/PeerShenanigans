@@ -2,9 +2,17 @@ console.log("hey!");
 
 window.onload = () => {
     var peer = new SimplePeer({
-        initiator: location.hash === "#1"//,
-        //trickle: false
+        initiator: location.hash === "#1",
+        trickle: false
     });
+
+    if(SimplePeer.WEBRTC_SUPPORT) {
+        console.log("WebRTC's supported, so uh, that's a first step.");
+    }
+    else {
+        console.error("No WebRTC support in the first place lol");
+        document.getElementById("messages").textContent += "Error: " + "WebRTC isn't supported on your browser/machine :(" + "\n";
+    }
 
     if(location.hash === "#1") {
         document.getElementById("yourId").setAttribute("placeholder", "Wait a second...");
@@ -19,6 +27,8 @@ window.onload = () => {
         var otherId = JSON.parse(document.getElementById("otherId").value);
         peer.signal(otherId);
         console.log("Signalling the other guy...");
+        console.log("Here's our peer object instance by the way:");
+        console.log(peer);
     });
 
     peer.on("connect", function() {
