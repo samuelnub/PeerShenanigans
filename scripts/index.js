@@ -41,6 +41,7 @@ window.onload = () => {
                 }
             ]
         },
+        reconnectTimer: 1000 * 5,
         trickle: false
     });
 
