@@ -3,7 +3,7 @@ console.log("hey!");
 window.onload = () => {
     var peer = new SimplePeer({
         initiator: location.hash === "#1",
-        config: {
+        /*config: {
             iceServers: [
                 { url: 'stun:stun01.sipphone.com' },
                 { url: 'stun:stun.ekiga.net' },
@@ -40,7 +40,7 @@ window.onload = () => {
                     username: '28224511:1379330808'
                 }
             ]
-        },
+        },*/
         reconnectTimer: 1000 * 5,
         trickle: false
     });
